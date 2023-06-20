@@ -1,0 +1,22 @@
+-- criando o banco de dados!!!
+CREATE DATABASE projeto;
+USE projeto;
+-- criando a tabela (tema).
+CREATE TABLE tema (
+    cod_tema INT not null auto_increment PRIMARY KEY,
+    nome_tema VARCHAR(100) not null);
+-- criando a tabela (streaming).
+CREATE TABLE streaming (
+    cod_streaming INT not null primary key,
+    nome_streaming VARCHAR(100) not null);
+-- criando a tabela (serie) que vai receber chaves estrangeiras da tabela (tema) e (streaming).
+CREATE TABLE serie (
+    cod_serie INT not null auto_increment primary key,
+    nome_serie VARCHAR(100) not null,
+    ano_serie INT not null,
+    cod_tema INT not null,
+    cod_streaming INT not null,
+    -- recebendo as chaves estrangeiras!!!
+    FOREIGN KEY (cod_tema) REFERENCES tema(cod_tema),
+    FOREIGN KEY (cod_streaming) REFERENCES streaming(cod_streaming)
+);
